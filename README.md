@@ -1,6 +1,6 @@
 # Voting App
 
-This is a simple web application for voting on your favorite programming language. The app is built with Flask and uses MySQL as the database.
+This is a simple web application for voting on your favorite Scripting language. The app is built with Flask and uses MySQL as the database.
 
 # Requirements
 
