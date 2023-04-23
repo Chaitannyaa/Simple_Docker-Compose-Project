@@ -23,11 +23,11 @@ docker-compose up
 
 ## Wait for the containers to start up and for the MySQL database to be initialized. This may take a few seconds.
 
-# Once the app is running, open a web browser and go to http://localhost:5000 to access the voting form.
+Once the app is running, open a web browser and go to http ://localhost:5000 to access the voting form.
 
 # License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the https://github.com/Chaitannyaa/Simple_Docker-Compose/blob/e8bb205af87dd68abcc50c49742be82770130d07/LICENSE.md file for details.
 
 
 
