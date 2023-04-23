@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vote for your favorite programming language!</title>
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+		}
+		form {
+			margin: 50px auto;
+			width: 300px;
+			padding: 20px;
+			background-color: #ffffff;
+			border: 1px solid #cccccc;
+			border-radius: 5px;
+		}
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+		input[type="submit"] {
+			margin-top: 10px;
+			background-color: #4CAF50;
+			color: #ffffff;
+			border: none;
+			padding: 10px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		table {
+			margin: 50px auto;
+			border-collapse: collapse;
+			width: 300px;
+			background-color: #ffffff;
+			border: 1px solid #cccccc;
+			border-radius: 5px;
+		}
+		th, td {
+			padding: 10px;
+			border: 1px solid #cccccc;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1>Vote for your favorite Scripting language!</h1>
+	<form method="POST">
+		<label><input type="radio" name="language" value="Python" checked> Python</label>
+		<label><input type="radio" name="language" value="Shell"> Shell</label>
+		<input type="submit" value="Vote">
+	</form>
+	<table>
+		<tr>
+			<th>Language</th>
+			<th>Count</th>
+		</tr>
+		{% for language, count in vote_counts.items() %}
+		<tr>
+			<td>{{ language }}</td>
+			<td>{{ count }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</body>
+</html>
+
