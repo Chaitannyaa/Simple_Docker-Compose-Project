@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        label 'prod'
-    }
-    environment {
-        DOCKER_IMAGE_TAG = "${BUILD_NUMBER}"
-    }
+    agent any
     stages {
         stage ("code"){
             steps {
@@ -13,7 +8,7 @@ pipeline {
         }
         stage ("Build"){
             steps {
-                sh 'docker build -t chaitannyaa/flask-vote-app:v-${DOCKER_IMAGE_TAG} .'
+                sh 'docker build -t chaitannyaa/flask-vote-app:latest .'
             }
         }
         stage ("login and push image"){
@@ -21,7 +16,7 @@ pipeline {
                 echo 'Logging into docker and pushing an image on dockerhub'
                 withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'password', usernameVariable: 'user')]) {
                     sh "docker login -u ${env.user} -p ${env.password}"
-                    sh "docker push chaitannyaa/flask-vote-app:v-${DOCKER_IMAGE_TAG}"
+                    sh "docker push chaitannyaa/flask-vote-app:latest"
                 }
             }
         }
