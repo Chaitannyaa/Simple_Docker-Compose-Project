@@ -29,10 +29,3 @@ Once the app is running, open a web browser and go to http ://localhost:5000 to 
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/Chaitannyaa/Simple_Docker-Compose/blob/e8bb205af87dd68abcc50c49742be82770130d07/LICENSE.md) file for details.
 
-
-
-
-
-
-
-
