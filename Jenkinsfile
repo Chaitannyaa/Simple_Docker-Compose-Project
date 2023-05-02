@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage ("code"){
             steps {
-                git url: 'https://github.com/Chaitannyaa/Simple_Docker-Compose-Project.git', branch: 'master'
+                git url: 'https://github.com/Chaitannyaa/Simple_Docker-Compose-Project.git', branch: 'prod'
             }
         }
         stage ("Build"){
@@ -16,7 +16,7 @@ pipeline {
                 sh 'docker build -t chaitannyaa/flask-vote-app:v-${DOCKER_IMAGE_TAG} .'
             }
         }
-        stage ("login and push image"){
+        stage ("Push image to docker registry"){
             steps {
                 echo 'Logging into docker and pushing an image on dockerhub'
                 withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'password', usernameVariable: 'user')]) {
