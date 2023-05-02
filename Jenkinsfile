@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'prod'
+        label 'dev'
     }
     environment {
         DOCKER_IMAGE_TAG = "${BUILD_NUMBER}"
@@ -8,12 +8,12 @@ pipeline {
     stages {
         stage ("code"){
             steps {
-                git url: 'https://github.com/Chaitannyaa/Simple_Docker-Compose-Project.git', branch: 'master'
+                git url: 'https://github.com/Chaitannyaa/Simple_Docker-Compose-Project.git', branch: 'dev'
             }
         }
         stage ("Build"){
             steps {
-                sh 'docker build -t chaitannyaa/flask-vote-app:v-${DOCKER_IMAGE_TAG} .'
+                sh 'docker build -t chaitannyaa/flask-vote-app:d-${DOCKER_IMAGE_TAG} .'
             }
         }
         stage ("login and push image"){
@@ -21,7 +21,7 @@ pipeline {
                 echo 'Logging into docker and pushing an image on dockerhub'
                 withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'password', usernameVariable: 'user')]) {
                     sh "docker login -u ${env.user} -p ${env.password}"
-                    sh "docker push chaitannyaa/flask-vote-app:v-${DOCKER_IMAGE_TAG}"
+                    sh "docker push chaitannyaa/flask-vote-app:d-${DOCKER_IMAGE_TAG}"
                 }
             }
         }
